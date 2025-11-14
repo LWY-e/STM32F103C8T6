@@ -1,0 +1,13 @@
+# 빌드 결과물 및 폴더 제외
+/build/
+/Debug/
+/Release/
+ 
+# 실행 파일 및 맵 파일 제외
+*.bin
+*.hex
+*.elf
+*.map
+ 
+# VS Code 설정 파일
+.vscode/
