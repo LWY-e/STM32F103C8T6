@@ -46,6 +46,7 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/Functions/blink.c
     Core/Src/Functions/button_control.c
+    Core/Src/Functions/timer_blink.c
     # Add user sources here
 )
 
