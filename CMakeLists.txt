@@ -12,6 +12,12 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
+# 소스 파일 자동 검색 ( Src 폴더 내의 모든 .c 파일 찾기)
+# GLOB_RECURSE를 사용하여 하위 폴더까지 찾아냄
+file(GLOB_RECURSE USER_SOURCES
+    "Board/Src/*.c"
+    "App/Src/*.c"
+)
 
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -44,15 +50,14 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    Core/Src/Functions/blink.c
-    Core/Src/Functions/button_control.c
-    Core/Src/Functions/timer_blink.c
+    ${USER_SOURCES}
     # Add user sources here
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    Core/Inc/Functions
+    Board/Inc
+    App/Inc
     # Add user defined include paths
 )
 

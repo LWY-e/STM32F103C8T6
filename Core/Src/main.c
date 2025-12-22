@@ -19,12 +19,15 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "timer_blink.h"
 #include "button_control.h"
+#include "app_main.h"
+#include <string.h> // memset 등 사용
 
 /* USER CODE END Includes */
 
@@ -46,6 +49,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
+// 전역 변수 선언
+uint8_t rx_data; // 한 글자씩 받는 변수
+char rx_buffer[20]; // 문자열 저장 버퍼
+uint8_t rx_index = 0; // 버퍼 인덱스
 
 /* USER CODE END PV */
 
@@ -90,10 +98,17 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM3_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  // 앱 초기화 ( PWM 시작 등 )
+  App_Init();
+  
+  // UART 인터럽트 수신 대기 시작
+  HAL_UART_Receive_IT(&huart1, &rx_data,1);
+
   // !! 타미어 3을 인터럽트 모드로 시작
-  HAL_TIM_Base_Start_IT(&htim3);
+  // HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,6 +117,9 @@ int main(void)
   { 
     //Blink_LED();
     Check_Button_And_Toggle_LED();
+
+    HAL_UART_Transmit(&huart1, (uint8_t*)"A\n", 2, 10);
+    HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -151,16 +169,41 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 // 콜백(Callback) 함수 구현
-// 타이머 주기가 경과했을 때 호출되는 콜백 함수
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  // 인터럽트를 발생시킨 타이머가 TIM3인지 확인
-  if (htim->Instance == TIM3)
-  {
-    // LED 토글 함수 호출
-    Toggle_LED_Using_Timer();
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+  if(huart->Instance == USART1){
+    // 줄 바꿈 문자(\n)가 들어오면 명령 처리
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2);
+
+    if (rx_data == '\n' || rx_data =='\r'){
+      rx_buffer[rx_index] = '\0'; /// 문자열 끝 표시
+
+      // 앱 레이어 명령 전달
+      App_Process_Command(rx_buffer);
+
+      // 버퍼 초기화
+      rx_index = 0;
+      memset(rx_buffer, 0, sizeof(rx_buffer));
+    }
+    else{
+      // 버퍼가 넘치지 않게 담기
+      if (rx_index < 19){
+        rx_buffer[rx_index++] = rx_data;
+      }
+    }
+    // 다시 수신 대기 (필수)
+    HAL_UART_Receive_IT(&huart1, &rx_data, 1);
   }
 }
+// 타이머 주기가 경과했을 때 호출되는 콜백 함수
+// void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+// {
+//   // 인터럽트를 발생시킨 타이머가 TIM3인지 확인
+//   if (htim->Instance == TIM3)
+//   {
+//     // LED 토글 함수 호출
+//     Toggle_LED_Using_Timer();
+//   }
+// }
 
 /* USER CODE END 4 */
 
