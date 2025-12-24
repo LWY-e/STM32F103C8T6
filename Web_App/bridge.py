@@ -39,8 +39,9 @@ def on_message(client, userdata, msg):
             # 숫자로 변환 가능한지 체크 (데이터 정제)
             if payload.isdigit():
                 # 전송 시 개행문자(\n)는 STM32 수신 인터럽트 종료 조건입니다.
-                ser.write(f"{payload}\n".encode())
-                print(f"➡️ STM32로 전송 완료: {payload}")
+                send_data = f"A{payload}\n"
+                ser.write(send_data.encode())
+                print(f"➡️ STM32로 전송 완료: {send_data.strip()}") # 'A'가 포함되어 출력됨
         except Exception as e:
             print(f"❌ 시리얼 전송 중 에러: {e}")
 

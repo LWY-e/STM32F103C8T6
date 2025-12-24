@@ -1,0 +1,6 @@
+/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/CMakeFiles/STM32F103C8T6.dir
+/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/CMakeFiles/edit_cache.dir
+/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/CMakeFiles/rebuild_cache.dir
+/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

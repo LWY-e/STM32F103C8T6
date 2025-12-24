@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/Debug/cmake_install.cmake",
-		"/home/wy/STM32_VSCODE/STM32F103C8T6/STM32_Firmware/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

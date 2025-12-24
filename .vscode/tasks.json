@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: build",
+            "type": "shell",
+            "command": "cmake --build STM32_Firmware/build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "CMake: configure",
+            "type": "shell",
+            "command": "cmake -S STM32_Firmware -B STM32_Firmware/build -DCMAKE_TOOLCHAIN_FILE=STM32_Firmware/cmake/gcc-arm-none-eabi.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: clean",
+            "type": "shell",
+            "command": "cmake --build STM32_Firmware/build --target clean",
+            "problemMatcher": []
+        }
+    ]
+}

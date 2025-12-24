@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "stlinkgdbtarget",
+            "request": "launch",
+            "name": "STM32 Debug (ST-Link)",
+            "device": "STM32F103C8T6",
+            "deviceName": "STM32F103C8T6",
+            "deviceCore": "Cortex-M3",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build",
+            "runEntry": "main",
+            "imagesAndSymbols": [
+                {
+                    "imageFileName": "${workspaceFolder}/STM32_Firmware/build/STM32F103C8T6.elf"
+                }
+            ]
+        }
+    ]
+}
