@@ -1,0 +1,36 @@
+[1/2] Cleaning additional files...
+[2/2] Cleaning all built files...
+Cleaning... 30 files.
+[1/30] Building ASM object CMakeFiles/STM32F103C8T6.dir/startup_stm32f103xb.s.obj
+[2/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/syscalls.c.obj
+[3/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/sysmem.c.obj
+[4/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/gpio.c.obj
+[5/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/usart.c.obj
+[6/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/tim.c.obj
+[7/30] Building C object CMakeFiles/STM32F103C8T6.dir/Board/Src/blink.c.obj
+[8/30] Building C object CMakeFiles/STM32F103C8T6.dir/Board/Src/button_control.c.obj
+[9/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/stm32f1xx_it.c.obj
+[10/30] Building C object CMakeFiles/STM32F103C8T6.dir/Board/Src/brightness_control.c.obj
+[11/30] Building C object CMakeFiles/STM32F103C8T6.dir/App/Src/app_main.c.obj
+[12/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/stm32f1xx_hal_msp.c.obj
+[13/30] Building C object CMakeFiles/STM32F103C8T6.dir/Board/Src/timer_blink.c.obj
+[14/30] Building C object CMakeFiles/STM32F103C8T6.dir/Core/Src/main.c.obj
+[15/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj
+[16/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f1xx.c.obj
+[17/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+[18/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+[19/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+[20/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj
+[21/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj
+[22/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+[23/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+[24/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj
+[25/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+[26/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj
+[27/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+[28/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj
+[29/30] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+[30/30] Linking C executable STM32F103C8T6.elf
+Memory region         Used Size  Region Size  %age Used
+             RAM:        1872 B        20 KB      9.14%
+           FLASH:       17896 B        64 KB     27.31%
