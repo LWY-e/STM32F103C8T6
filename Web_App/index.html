@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>STM32 LED 제어 패널</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; padding-top: 50px; }
+        .card { background: white; display: inline-block; padding: 30px; border-radius: 15px; shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .status-on { color: green; font-weight: bold; }
+        .status-off { color: red; font-weight: bold; }
+        .control-group { margin: 20px 0; padding: 15px; border-top: 1px solid #eee; }
+        input[type=range] { width: 250px; }
+        input[type=number] { width: 60px; padding: 5px; }
+        button { padding: 5px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>💡 LED Brightness Control</h1>
+        <p>상태: <span id="status" class="status-off">접속 중...</span></p>
+
+        <div class="control-group">
+            <h3>슬라이더 제어</h3>
+            <input type="range" id="pwmSlider" min="0" max="100" value="0" 
+                   oninput="updateFromSlider(this.value)">
+            <p>현재 값: <span id="sliderVal">0</span>%</p>
+        </div>
+
+        <div class="control-group">
+            <h3>직접 입력 (0~100)</h3>
+            <input type="number" id="pwmInput" min="0" max="100" value="0">
+            <button onclick="sendInputVal()">전송</button>
+        </div>
+    </div>
+
+    <script>
+        // MQTT 클라이언트 설정
+        const client = new Paho.MQTT.Client("127.0.0.1", 9001, "web_client_" + Math.random());
+
+        client.connect({
+            onSuccess: () => {
+                document.getElementById("status").innerText = "연결됨";
+                document.getElementById("status").className = "status-on";
+            },
+            onFailure: () => {
+                document.getElementById("status").innerText = "연결 실패";
+                document.getElementById("status").className = "status-off";
+            }
+        });
+
+        // 메시지 전송 함수
+        function publish(val) {
+            if(!client.isConnected()) return;
+            const message = new Paho.MQTT.Message(String(val));
+            message.destinationName = "motor/control"; // 오타 주의!
+            client.send(message);
+            console.log("Sent: " + val);
+        }
+
+        // 슬라이더 이벤트
+        function updateFromSlider(val) {
+            document.getElementById("sliderVal").innerText = val;
+            document.getElementById("pwmInput").value = val;
+            publish(val);
+        }
+
+        // 입력창 이벤트
+        function sendInputVal() {
+            const val = document.getElementById("pwmInput").value;
+            if(val >= 0 && val <= 100) {
+                document.getElementById("pwmSlider").value = val;
+                document.getElementById("sliderVal").innerText = val;
+                publish(val);
+            } else {
+                alert("0에서 100 사이의 숫자를 입력하세요.");
+            }
+        }
+    </script>
+</body>
+</html>
