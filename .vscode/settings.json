@@ -19,5 +19,5 @@
         "--completion-style=detailed",
         "--header-insertion=never"
     ],
-    "stm32cube.deviceName": "STM32F103C8Tx"
+    "stm32cube.stm32CubeProgrammerPath": "/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI"
 }
